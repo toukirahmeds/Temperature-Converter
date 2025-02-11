@@ -1,3 +1,5 @@
+const { getCalculatedResults } = require("./utils");
+
 const acceptedUnitNames = ["celsius", "fahrenheit", "kelvin"];
 
 const commandArgs = process.argv.slice(2, 4).map(
@@ -45,28 +47,9 @@ if (isNaN(fromValue)) {
     process.exit();
 }
 
-let unit1Name, unit1Value, unit2Name, unit2Value;
+const results = getCalculatedResults(fromUnitName, fromValue);
 
-if (fromUnitName === "celsius") {
-    unit1Name = "Fahrenheit";
-    unit1Value = fromValue * (9/5) + 32;
-
-    unit2Name = "Kelvin";
-    unit2Value = fromValue + 273.15;
-} else if (fromUnitName === "fahrenheit") {
-    unit1Name = "Celsius";
-    unit1Value = (5/9) * (fromValue - 32);
-
-    unit2Name = "Kelvin";
-    unit2Value = (fromValue + 459.67) * (5/9);
-} else if (fromUnitName === "kelvin") {
-    unit1Name = "Celsius";
-    unit1Value = fromValue - 273.15;
-
-    unit2Name = "Fahrenheit";
-    unit2Value = (fromValue - 273.15) * (9/5) + 32;
-}
-
-console.log(`${fromValue} ${fromUnitName}`);
-console.log(`${unit1Value.toFixed(2)} ${unit1Name}`);
-console.log(`${unit2Value.toFixed(2)} ${unit2Name}`);
+console.log(`${fromValue} ${results.name}`);
+results.convertedResults.forEach(({ name, value }) => {
+    console.log(`${value} ${name}`);
+});
