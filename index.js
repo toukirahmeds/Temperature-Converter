@@ -14,7 +14,7 @@ const main = async () => {
         results = await runForConsoleInput();
     }
 
-    console.log(`\ns${results.value} ${results.name}`);
+    console.log(`\n${results.value} ${results.name}`);
     results.convertedResults.forEach(({ name, value }) => {
         console.log(`${value} ${name}`);
     });

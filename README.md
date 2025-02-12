@@ -8,5 +8,6 @@ Converts temperature from one unit to other units.
 
 ## How to run
 - In the command-line terminal, go to the project directory.
-- Then run the command `node index.js --from=[unitName] --value=[number]`.
-    E.g. `node index.js --from=celsius --value=200`.
+- For command-line input, run `npm start -- --from=[unitName] --value=[number]`.
+    E.g. `npm start -- --from=celsius --value=200`.
+- For console input, run `npm start`.
