@@ -1,16 +1,25 @@
 const runForCmdLineArgs = require("./runForCmdLineArgs");
+const runForConsoleInput = require("./runForConsoleInput");
 
-const commandArgs = process.argv.slice(2, 4).map(
-    arg => arg.toLowerCase()
-);
+const main = async () => {
+    const commandArgs = process.argv.slice(2, 4).map(
+        arg => arg.toLowerCase()
+    );
 
-let results;
+    let results;
 
-if (commandArgs.length) {
-    results = runForCmdLineArgs(commandArgs);
-}
+    if (commandArgs.length) {
+        results = runForCmdLineArgs(commandArgs);
+    } else {
+        results = await runForConsoleInput();
+    }
 
-console.log(`${results.value} ${results.name}`);
-results.convertedResults.forEach(({ name, value }) => {
-    console.log(`${value} ${name}`);
-});
+    console.log(`\ns${results.value} ${results.name}`);
+    results.convertedResults.forEach(({ name, value }) => {
+        console.log(`${value} ${name}`);
+    });
+
+    process.exit();
+};
+
+main();

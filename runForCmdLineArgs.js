@@ -2,7 +2,6 @@ const { printManual, getCalculatedResults } = require("./utils");
 const { acceptedUnitNames } = require("./constants");
 
 const runForCmdLineArgs = (commandArgs) => {
-    // console.log(commandArgs);
     const fromUnitArg = commandArgs.find(item => item.includes("--from="));
 
     if (!fromUnitArg) {
