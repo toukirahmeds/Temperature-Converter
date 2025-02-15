@@ -1,5 +1,16 @@
 const unitProperties = require("./unitProperties");
 
+/**
+ * Calculates the temperature unit conversions.
+ * 
+ * @param {string} fromUnit 
+ * @param {number} fromValue 
+ * @returns {{
+ *      name: string,
+ *      value: number,
+ *      convertedResults: Array<{ name: string, value: number }>
+ * }}
+ */
 const getCalculatedResults = (fromUnit, fromValue) => {
     const  currentUnitProperties = unitProperties[fromUnit];
 
@@ -13,6 +24,9 @@ const getCalculatedResults = (fromUnit, fromValue) => {
     }
 };
 
+/**
+ * Prints the manual.
+ */
 const printManual = () => {
     const manualText = `
         Usage: node index.js --from=[unitName] --value=[number]\n

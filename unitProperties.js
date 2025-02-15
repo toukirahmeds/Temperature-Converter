@@ -1,3 +1,6 @@
+/**
+ * Properties of each unit and functions to calculate.
+ */
 const unitProperties = {
     "celsius": {
         name: "Celsius",

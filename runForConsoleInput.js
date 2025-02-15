@@ -3,8 +3,22 @@ const readline = require("readline").promises;
 const unitProperties = require("./unitProperties");
 const { getCalculatedResults } = require("./utils");
 
+// Interface to read from the console.
 const rlInterface = readline.createInterface(process.stdin, process.stdout);
 
+/**
+ * Asks the user to input the unit to convert from in console
+ * and returns the property of the unit.
+ * 
+ * @returns {{
+ *  name: string,
+ *  symbol: string,
+ *  convertTo: Array<{
+ *      name: string,
+ *      getValue: (fromValue: number) => number
+ *  }>
+ * }}
+ */
 const getFromUnit = async () => {
     const fromUnitInput = (await rlInterface.question(
         `From unit ('c' for celsius, 'f' for fahrenheit, 'k' for kelvin): `
@@ -14,13 +28,19 @@ const getFromUnit = async () => {
             .find(value => value.symbol === fromUnitInput);
 
     if (!unitProperty) {
-        console.log("Please provide a valid unit...");
+        console.log("Please provide a valid input...");
         return getFromUnit();
     }
 
     return unitProperty;
 };
 
+/**
+ * Asks the user to input the convert from value in console
+ * and returns the parsed value.
+ * 
+ * @returns {number}
+ */
 const getFromValue = async () => {
     const fromValue = parseFloat(await rlInterface.question(
         `\nFrom value: `
@@ -34,10 +54,20 @@ const getFromValue = async () => {
     return fromValue;
 };
 
+/**
+ * Converts the temperature from console input.
+ * 
+ * @returns {{
+ *      name: string,
+ *      value: number,
+ *      convertedResults: Array<{ name: string, value: number }>
+ * }}
+ */
 const runForConsoleInput = async () => {
     const unitProperty = await getFromUnit();
     const fromValue = await getFromValue();
 
+    // Close the interface for reading input from console.
     rlInterface.close();
     
     return getCalculatedResults(
