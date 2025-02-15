@@ -1,8 +1,11 @@
 /**
  * Accepted unit names in the command-line arguments.
  */
-const acceptedUnitNames = ["celsius", "fahrenheit", "kelvin"];
+const ACCEPTED_UNIT_NAMES = ["celsius", "fahrenheit", "kelvin"];
+
+const HELP_ARG = "--help";
 
 module.exports = {
-    acceptedUnitNames
+    ACCEPTED_UNIT_NAMES,
+    HELP_ARG
 };

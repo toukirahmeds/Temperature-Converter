@@ -1,5 +1,7 @@
 const runForCmdLineArgs = require("./runForCmdLineArgs");
 const runForConsoleInput = require("./runForConsoleInput");
+const { printManualAndExit } = require("./utils");
+const { HELP_ARG } = require("./constants");
 
 /**
  * Starts the app.
@@ -9,6 +11,14 @@ const main = async () => {
     const commandArgs = process.argv.slice(2, 4).map(
         arg => arg.toLowerCase()
     );
+
+    const isHelpArgExists = commandArgs.includes(HELP_ARG);
+
+    // If '--help' command-line argument exists, then
+    // print manual and exit.
+    if (isHelpArgExists) {
+        printManualAndExit();
+    }
 
     let results;
 

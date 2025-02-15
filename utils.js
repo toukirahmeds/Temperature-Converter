@@ -27,7 +27,7 @@ const getCalculatedResults = (fromUnit, fromValue) => {
 /**
  * Prints the manual.
  */
-const printManual = () => {
+const printManualAndExit = () => {
     const manualText = `
         Usage: node index.js --from=[unitName] --value=[number]\n
         Convert temperature to other units of temperature.\n
@@ -37,9 +37,11 @@ const printManual = () => {
     `;
 
     console.log(manualText);
+
+    process.exit();
 }
 
 module.exports = {
     getCalculatedResults,
-    printManual
+    printManualAndExit
 };
