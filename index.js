@@ -36,6 +36,8 @@ const main = async () => {
     results.convertedResults.forEach(({ name, value }) => {
         console.log(`${value} ${name}`);
     });
+
+    process.exit();
 };
 
 main();

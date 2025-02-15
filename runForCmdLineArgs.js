@@ -13,7 +13,7 @@ const { ACCEPTED_UNIT_NAMES } = require("./constants");
  */
 const runForCmdLineArgs = (commandArgs) => {
     // Find the converted from unit from the command line arguments.
-    const fromUnitArg = commandArgs.find(item => item.includes("--from="));
+    const fromUnitArg = commandArgs.find(item => item.startsWith("--from="));
 
     // If no fromUnitArg is found, then print manual and exit.
     if (!fromUnitArg) {
