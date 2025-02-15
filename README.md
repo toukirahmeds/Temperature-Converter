@@ -12,3 +12,4 @@ Converts temperature from one unit to other units.
 - For command-line input, run `npm start -- --from=[unitName] --value=[number]`.
     E.g. `npm start -- --from=celsius --value=200`.
 - For console input, run `npm start`.
+- For help manual, run `npm start -- --help`.
