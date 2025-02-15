@@ -29,7 +29,7 @@ const runForCmdLineArgs = (commandArgs) => {
     }
 
     // Find the convert from value from command-line arguments.
-    const fromValueArg = commandArgs.find(item => item.includes("--value="));
+    const fromValueArg = commandArgs.find(item => item.startsWith("--value="));
 
     // If convert from value is not found, then print manual and exit.
     if (!fromValueArg) {
